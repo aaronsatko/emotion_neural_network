@@ -11,7 +11,7 @@ class EmotionDataset(Dataset):
         self.transform = transform
         self.label_encoder = LabelEncoder()
         self.dataframe['encoded_labels'] = self.label_encoder.fit_transform(dataframe['label'])
-
+        self.class_names = self.label_encoder.classes_  # Store class names
 
     def __len__(self):
         return len(self.dataframe)
@@ -26,3 +26,7 @@ class EmotionDataset(Dataset):
             image = self.transform(image)
 
         return image, label
+    
+    def get_class_names_with_indices(self):
+        return {index: label for index, label in enumerate(self.class_names)}
+    

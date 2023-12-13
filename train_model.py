@@ -45,7 +45,7 @@ criterion = torch.nn.CrossEntropyLoss()
 optimizer = torch.optim.SGD(model.parameters(), lr=0.01)
 
 # Training loop
-num_epochs = 5
+num_epochs = 8
 
 for epoch in range(num_epochs):
     model.train()
